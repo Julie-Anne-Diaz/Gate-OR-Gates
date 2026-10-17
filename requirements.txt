@@ -1,0 +1,2 @@
+# Required for Minecraft placement. Yosys is installed separately.
+ortools>=9.12,<10
