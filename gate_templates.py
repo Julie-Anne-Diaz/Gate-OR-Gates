@@ -86,7 +86,14 @@ GATES: dict[str, GateTemplate] = {
     ),
     "NOR": GateTemplate(
         blocks=(
-            # Add blocks here.
+            Block(0, -1, 0, "minecraft:redstone_lamp"),
+            Block(0, 0, 0, "minecraft:lever[face=floor,facing=west,powered=false]"),
+            Block(1, -1, 0, "minecraft:yellow_wool"),
+            Block(1,0,0, "minecraft:redstone_wire"),
+            Block(2, 0, 0, "minecraft:yellow_wool"),
+            Block(3, 0, 0, "minecraft:redstone_wall_torch[facing=east]"),
+            Block(4,-1,0, "minecraft:redstone_lamp"),
+            Block(4,0,0, "minecraft:redstone_wire"),
         ),
         inputs={"A": None, "B": None},
         outputs={"Y": None},
