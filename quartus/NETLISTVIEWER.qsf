@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "MAX 10"
 set_global_assignment -name DEVICE 10M50DAF484C6GES
-set_global_assignment -name TOP_LEVEL_ENTITY ALL_GATES_async
+set_global_assignment -name TOP_LEVEL_ENTITY RALU_async
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 24.1STD.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:46:06  OCTOBER 17, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Lite Edition"
@@ -56,6 +56,7 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/advanced compoenets/async/RALU/RALU_async.sv"
 set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/XOR_GATE_async.sv"
 set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/XNOR_GATE_async.sv"
 set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/OR_GATE_async.sv"
