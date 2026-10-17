@@ -1,0 +1,9 @@
+1 12 AND_GATE_8in 4 fast 73 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/QUESTA/work 1 0 0 0 99 0
+1 11 OR_GATE_8in 4 fast 73 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/QUESTA/work 1 0 0 0 99 0
+1 12 NOT_GATE_8in 4 fast 73 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/QUESTA/work 1 0 0 0 24 0
+1 13 NAND_GATE_8in 4 fast 73 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/QUESTA/work 1 0 0 0 101 0
+1 12 NOR_GATE_8in 4 fast 73 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/QUESTA/work 1 0 0 0 101 0
+1 12 XOR_GATE_8in 4 fast 73 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/QUESTA/work 1 0 0 0 99 0
+1 13 XNOR_GATE_8in 4 fast 73 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/QUESTA/work 1 0 131072 0 101 0
+1 13 ALL_GATES_8in 4 fast 73 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/QUESTA/work 1 0 0 0 169 0
+1 16 ALL_GATES_8in_tb 4 fast 73 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/QUESTA/work 1 0 131072 0 972 0
