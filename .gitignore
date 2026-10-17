@@ -1,0 +1,12 @@
+# Questa / ModelSim generated files
+**/QUESTA/work/
+**/QUESTA/*.wlf
+**/QUESTA/*.mpf
+**/QUESTA/*.mti
+**/QUESTA/*.cr.mti
+
+# Quartus generated files
+quartus/db/
+quartus/incremental_db/
+quartus/output_files/
+quartus/*.qws

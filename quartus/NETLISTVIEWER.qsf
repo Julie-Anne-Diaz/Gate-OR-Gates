@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "MAX 10"
 set_global_assignment -name DEVICE 10M50DAF484C6GES
-set_global_assignment -name TOP_LEVEL_ENTITY Ripple_Carry_Adder
+set_global_assignment -name TOP_LEVEL_ENTITY ALL_GATES_async
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 24.1STD.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:46:06  OCTOBER 17, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Lite Edition"
@@ -56,6 +56,24 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/XOR_GATE_async.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/XNOR_GATE_async.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/OR_GATE_async.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/NOT_GATE_async.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/NOR_GATE_async.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/NAND_GATE_async.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/AND_GATE_async.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/async/ALL_GATES_async.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/sync/XOR_GATE_sync.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/sync/XNOR_GATE_sync.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/sync/OR_GATE_sync.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/sync/NOT_GATE_sync.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/sync/NOR_GATE_sync.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/sync/NAND_GATE_sync.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/sync/AND_GATE_sync.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../seq/basic gates + register/sync/ALL_GATES_sync.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE ../complex_comb_logic/sevenseg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../complex_comb_logic/ALU_4bit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../complex_comb_logic/Ripple_Carry_Adder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../complex_comb_logic/Full_Adder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE "../2+ input gates/XOR_GATE_8in.sv"
@@ -72,6 +90,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE "../basic gates/comb version/NOT_
 set_global_assignment -name SYSTEMVERILOG_FILE "../basic gates/comb version/NOR_GATE.sv"
 set_global_assignment -name SYSTEMVERILOG_FILE "../basic gates/comb version/NAND_GATE.sv"
 set_global_assignment -name SYSTEMVERILOG_FILE "../basic gates/comb version/AND_GATE.sv"
+set_global_assignment -name SOURCE_FILE db/NETLISTVIEWER.cmp.rdb
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
