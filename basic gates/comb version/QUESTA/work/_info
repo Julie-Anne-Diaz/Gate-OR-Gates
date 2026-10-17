@@ -1,0 +1,264 @@
+m255
+K4
+z2
+!s12c _opt
+Z0 !s99 nomlopt
+!s11f vlog 2026.2 2026.05, May 18 2026
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/abhir/Downloads
+T_opt
+!i145 1
+!i144 0
+!s110 1792250122
+V?lmd?aaE<Z7[D;^g=KQ?[3
+04 12 4 work ALL_GATES_tb fast 0
+=1-bcfce7e3b3b7-6ad39109-143-58e8
+R0
+!s12f OEM100
+!s12b OEM100
+!s124 OEM100
+!s135 nogc
+!i152 0
+o-quiet -auto_acc_if_foreign -work work +acc
+tCvgOpt 0 defaultOptions 1110029060
+n@_opt
+OL;O;2026.2;84
+vALL_GATES
+2C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES.sv
+Z1 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
+Z2 !s110 1792250111
+!i10b 1
+!s100 1n64n5ozg2=?2<[[CS<BA3
+IhUUg3??OWA<738>CbDNGI3
+S1
+Z3 dC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA
+w1792250088
+8C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES.sv
+FC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES.sv
+!i122 5
+L0 4 56
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2026.2;84
+r1
+!s85 0
+31
+!s108 1792250110.000000
+!s107 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES.sv|
+!i113 0
+Z6 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z7 tCvgOpt 0 defaultOptions 1086588984
+n@a@l@l_@g@a@t@e@s
+vALL_GATES_tb
+2C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES_tb.sv
+R1
+R2
+!i10b 1
+!s100 B93zeDLcS0dXISMin48Pl2
+Iacfi22Mze]?Pf=?fFAiA@2
+S1
+R3
+w1792249695
+8C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES_tb.sv
+FC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES_tb.sv
+!i122 6
+L0 4 258
+R4
+R5
+r1
+!s85 0
+31
+Z8 !s108 1792250111.000000
+!s107 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES_tb.sv|
+!i113 0
+R6
+R7
+n@a@l@l_@g@a@t@e@s_tb
+vAND_GATE
+2C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/AND_GATE.sv
+R1
+R2
+!i10b 1
+!s100 TNlZnKWPY@eaMh67=E@d@0
+I<^QdJ6jI`Ug5D>650;S@80
+S1
+R3
+w1792250084
+8C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/AND_GATE.sv
+FC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/AND_GATE.sv
+!i122 7
+Z9 L0 4 13
+R4
+R5
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/AND_GATE.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/AND_GATE.sv|
+!i113 0
+R6
+R7
+n@a@n@d_@g@a@t@e
+vNAND_GATE
+2C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NAND_GATE.sv
+R1
+R2
+!i10b 1
+!s100 K^OjdMhiU>W1GhLT>>bjF1
+I]PW<1@>d7o`HG=Wf=j]So3
+S1
+R3
+w1792250091
+8C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NAND_GATE.sv
+FC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NAND_GATE.sv
+!i122 8
+R9
+R4
+R5
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NAND_GATE.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NAND_GATE.sv|
+!i113 0
+R6
+R7
+n@n@a@n@d_@g@a@t@e
+vNOR_GATE
+2C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOR_GATE.sv
+R1
+R2
+!i10b 1
+!s100 L_OZ36hfe`>z7jgPfh0jT3
+IHQ7h3U<_IY4J^PUEkAO1:3
+S1
+R3
+w1792250094
+8C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOR_GATE.sv
+FC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOR_GATE.sv
+!i122 9
+R9
+R4
+R5
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOR_GATE.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOR_GATE.sv|
+!i113 0
+R6
+R7
+n@n@o@r_@g@a@t@e
+vNOT_GATE
+2C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOT_GATE.sv
+R1
+R2
+!i10b 1
+!s100 =CN?8e5WmBN_jZROCYzW30
+IK@mEAdU_D`RAzZDO;RVeR2
+S1
+R3
+w1792250096
+8C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOT_GATE.sv
+FC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOT_GATE.sv
+!i122 10
+L0 4 12
+R4
+R5
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOT_GATE.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOT_GATE.sv|
+!i113 0
+R6
+R7
+n@n@o@t_@g@a@t@e
+vOR_GATE
+2C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/OR_GATE.sv
+R1
+R2
+!i10b 1
+!s100 kh5D=IKBn2:D8fGFWhfP02
+I:Y9UFVI6n5?32G;XMIXM?0
+S1
+R3
+w1792250099
+8C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/OR_GATE.sv
+FC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/OR_GATE.sv
+!i122 11
+R9
+R4
+R5
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/OR_GATE.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/OR_GATE.sv|
+!i113 0
+R6
+R7
+n@o@r_@g@a@t@e
+vXNOR_GATE
+2C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XNOR_GATE.sv
+R1
+Z10 !s110 1792250112
+!i10b 1
+!s100 EUzYIQ1<>c:mjiB7Aj3zW1
+IFaOE]LHRAf94m^5jPH7c81
+S1
+R3
+w1792250102
+8C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XNOR_GATE.sv
+FC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XNOR_GATE.sv
+!i122 12
+R9
+R4
+R5
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XNOR_GATE.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XNOR_GATE.sv|
+!i113 0
+R6
+R7
+n@x@n@o@r_@g@a@t@e
+vXOR_GATE
+2C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XOR_GATE.sv
+R1
+R10
+!i10b 1
+!s100 Y>_Yeg@>@QD<IRU?:M>cm1
+IdK_cn<oeBn7S`69l]if_Y1
+S1
+R3
+w1792250107
+8C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XOR_GATE.sv
+FC:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XOR_GATE.sv
+!i122 13
+R9
+R4
+R5
+r1
+!s85 0
+31
+!s108 1792250112.000000
+!s107 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XOR_GATE.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XOR_GATE.sv|
+!i113 0
+R6
+R7
+n@x@o@r_@g@a@t@e

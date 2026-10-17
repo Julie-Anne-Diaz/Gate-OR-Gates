@@ -1,0 +1,1 @@
+C:/questasim64_2026.2/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 934320 work.ALL_GATES_tb -quiet -auto_acc_if_foreign -work work +acc -allow_unnamed -o _opt -id 1-bcfce7e3b3b7-6ad39109-143-58e8 +__betafsm 

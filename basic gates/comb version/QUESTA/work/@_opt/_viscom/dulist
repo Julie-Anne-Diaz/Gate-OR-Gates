@@ -1,0 +1,9 @@
+1 8 AND_GATE 4 fast 83 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA/work 1 0 0 0 33 0
+1 7 OR_GATE 4 fast 83 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA/work 1 0 0 0 33 0
+1 8 NOT_GATE 4 fast 83 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA/work 1 0 0 0 24 0
+1 9 NAND_GATE 4 fast 83 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA/work 1 0 0 0 35 0
+1 8 NOR_GATE 4 fast 83 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA/work 1 0 0 0 35 0
+1 8 XOR_GATE 4 fast 83 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA/work 1 0 0 0 33 0
+1 9 XNOR_GATE 4 fast 83 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA/work 1 0 0 0 35 0
+1 9 ALL_GATES 4 fast 83 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA/work 1 0 131072 0 91 0
+1 12 ALL_GATES_tb 4 fast 83 C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/QUESTA/work 1 0 0 0 609 0
