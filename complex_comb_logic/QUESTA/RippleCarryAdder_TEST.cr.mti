@@ -1,0 +1,22 @@
+C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Ripple_Carry_Adder.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Ripple_Carry_Adder.sv
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module Ripple_Carry_Adder
+
+Top level modules:
+	Ripple_Carry_Adder
+
+} {} {}} C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Ripple_Carry_Adder_tb.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Ripple_Carry_Adder_tb.sv
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module Ripple_Carry_Adder_tb
+
+Top level modules:
+	Ripple_Carry_Adder_tb
+
+} {} {}} C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Full_Adder.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Full_Adder.sv
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module Full_Adder
+
+Top level modules:
+	Full_Adder
+
+} {} {}}

@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sat Oct 17 12:23:17 2026
+Analysis & Synthesis Status : Successful - Sat Oct 17 13:54:27 2026
 Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 Revision Name : NETLISTVIEWER
-Top-level Entity Name : XNOR_GATE_8in
+Top-level Entity Name : Ripple_Carry_Adder
 Family : MAX 10
-Total logic elements : 12
-    Total combinational functions : 12
+Total logic elements : 9
+    Total combinational functions : 9
     Dedicated logic registers : 0
 Total registers : 0
-Total pins : 36
+Total pins : 14
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

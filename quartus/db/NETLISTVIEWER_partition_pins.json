@@ -4,6 +4,10 @@
 			"name" : "Top",
 			"pins" : [
 				{
+					"name" : "C_out",
+					"strict" : false
+				},
+				{
 					"name" : "out1[0]",
 					"strict" : false
 				},
@@ -20,131 +24,39 @@
 					"strict" : false
 				},
 				{
-					"name" : "in1[0]",
+					"name" : "in7",
 					"strict" : false
 				},
 				{
-					"name" : "in2[0]",
+					"name" : "in8",
 					"strict" : false
 				},
 				{
-					"name" : "in3[0]",
+					"name" : "in5",
 					"strict" : false
 				},
 				{
-					"name" : "in4[0]",
+					"name" : "in6",
 					"strict" : false
 				},
 				{
-					"name" : "in5[0]",
+					"name" : "in3",
 					"strict" : false
 				},
 				{
-					"name" : "in6[0]",
+					"name" : "in4",
 					"strict" : false
 				},
 				{
-					"name" : "in7[0]",
+					"name" : "in1",
 					"strict" : false
 				},
 				{
-					"name" : "in8[0]",
+					"name" : "in2",
 					"strict" : false
 				},
 				{
-					"name" : "in1[1]",
-					"strict" : false
-				},
-				{
-					"name" : "in2[1]",
-					"strict" : false
-				},
-				{
-					"name" : "in3[1]",
-					"strict" : false
-				},
-				{
-					"name" : "in4[1]",
-					"strict" : false
-				},
-				{
-					"name" : "in5[1]",
-					"strict" : false
-				},
-				{
-					"name" : "in6[1]",
-					"strict" : false
-				},
-				{
-					"name" : "in7[1]",
-					"strict" : false
-				},
-				{
-					"name" : "in8[1]",
-					"strict" : false
-				},
-				{
-					"name" : "in1[2]",
-					"strict" : false
-				},
-				{
-					"name" : "in2[2]",
-					"strict" : false
-				},
-				{
-					"name" : "in3[2]",
-					"strict" : false
-				},
-				{
-					"name" : "in4[2]",
-					"strict" : false
-				},
-				{
-					"name" : "in5[2]",
-					"strict" : false
-				},
-				{
-					"name" : "in6[2]",
-					"strict" : false
-				},
-				{
-					"name" : "in7[2]",
-					"strict" : false
-				},
-				{
-					"name" : "in8[2]",
-					"strict" : false
-				},
-				{
-					"name" : "in1[3]",
-					"strict" : false
-				},
-				{
-					"name" : "in2[3]",
-					"strict" : false
-				},
-				{
-					"name" : "in3[3]",
-					"strict" : false
-				},
-				{
-					"name" : "in4[3]",
-					"strict" : false
-				},
-				{
-					"name" : "in5[3]",
-					"strict" : false
-				},
-				{
-					"name" : "in6[3]",
-					"strict" : false
-				},
-				{
-					"name" : "in7[3]",
-					"strict" : false
-				},
-				{
-					"name" : "in8[3]",
+					"name" : "C_in",
 					"strict" : false
 				}
 			]

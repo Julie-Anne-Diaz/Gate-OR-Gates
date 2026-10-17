@@ -1,39 +1,49 @@
-|XNOR_GATE_8in
-in1[0] => out1.IN0
-in1[1] => out1.IN0
-in1[2] => out1.IN0
-in1[3] => out1.IN0
-in2[0] => out1.IN1
-in2[1] => out1.IN1
-in2[2] => out1.IN1
-in2[3] => out1.IN1
-in3[0] => out1.IN1
-in3[1] => out1.IN1
-in3[2] => out1.IN1
-in3[3] => out1.IN1
-in4[0] => out1.IN1
-in4[1] => out1.IN1
-in4[2] => out1.IN1
-in4[3] => out1.IN1
-in5[0] => out1.IN1
-in5[1] => out1.IN1
-in5[2] => out1.IN1
-in5[3] => out1.IN1
-in6[0] => out1.IN1
-in6[1] => out1.IN1
-in6[2] => out1.IN1
-in6[3] => out1.IN1
-in7[0] => out1.IN1
-in7[1] => out1.IN1
-in7[2] => out1.IN1
-in7[3] => out1.IN1
-in8[0] => out1.IN1
-in8[1] => out1.IN1
-in8[2] => out1.IN1
-in8[3] => out1.IN1
-out1[0] <= out1.DB_MAX_OUTPUT_PORT_TYPE
-out1[1] <= out1.DB_MAX_OUTPUT_PORT_TYPE
-out1[2] <= out1.DB_MAX_OUTPUT_PORT_TYPE
-out1[3] <= out1.DB_MAX_OUTPUT_PORT_TYPE
+|Ripple_Carry_Adder
+in1 => in1.IN1
+in2 => in2.IN1
+in3 => in3.IN1
+in4 => in4.IN1
+in5 => in5.IN1
+in6 => in6.IN1
+in7 => in7.IN1
+in8 => in8.IN1
+C_in => C_in.IN1
+C_out <= Full_Adder:Adder4.C_out
+out1[0] <= Full_Adder:Adder1.out1
+out1[1] <= Full_Adder:Adder2.out1
+out1[2] <= Full_Adder:Adder3.out1
+out1[3] <= Full_Adder:Adder4.out1
+
+
+|Ripple_Carry_Adder|Full_Adder:Adder1
+in1 => Add0.IN1
+in2 => Add0.IN2
+C_in => Add1.IN4
+C_out <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out1 <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Ripple_Carry_Adder|Full_Adder:Adder2
+in1 => Add0.IN1
+in2 => Add0.IN2
+C_in => Add1.IN4
+C_out <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out1 <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Ripple_Carry_Adder|Full_Adder:Adder3
+in1 => Add0.IN1
+in2 => Add0.IN2
+C_in => Add1.IN4
+C_out <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out1 <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Ripple_Carry_Adder|Full_Adder:Adder4
+in1 => Add0.IN1
+in2 => Add0.IN2
+C_in => Add1.IN4
+C_out <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out1 <= Add1.DB_MAX_OUTPUT_PORT_TYPE
 
 

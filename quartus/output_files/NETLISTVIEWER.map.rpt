@@ -1,5 +1,5 @@
 Analysis & Synthesis report for NETLISTVIEWER
-Sat Oct 17 12:23:17 2026
+Sat Oct 17 13:54:27 2026
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -14,10 +14,9 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: Top-level Entity: |XNOR_GATE_8in
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+  9. Post-Synthesis Netlist Statistics for Top Partition
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -44,16 +43,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Oct 17 12:23:17 2026           ;
+; Analysis & Synthesis Status        ; Successful - Sat Oct 17 13:54:27 2026           ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                      ; NETLISTVIEWER                                   ;
-; Top-level Entity Name              ; XNOR_GATE_8in                                   ;
+; Top-level Entity Name              ; Ripple_Carry_Adder                              ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 12                                              ;
-;     Total combinational functions  ; 12                                              ;
+; Total logic elements               ; 9                                               ;
+;     Total combinational functions  ; 9                                               ;
 ;     Dedicated logic registers      ; 0                                               ;
 ; Total registers                    ; 0                                               ;
-; Total pins                         ; 36                                              ;
+; Total pins                         ; 14                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -69,7 +68,7 @@ on the Quartus Prime software download page.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; 10M50DAF484C6GES   ;                    ;
-; Top-level entity name                                            ; XNOR_GATE_8in      ; NETLISTVIEWER      ;
+; Top-level entity name                                            ; Ripple_Carry_Adder ; NETLISTVIEWER      ;
 ; Family name                                                      ; MAX 10             ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -165,54 +164,59 @@ on the Quartus Prime software download page.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                         ;
-+------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path   ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                   ; Library ;
-+------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
-; ../2+ input gates/XNOR_GATE_8in.sv ; yes             ; User SystemVerilog HDL File  ; C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/XNOR_GATE_8in.sv ;         ;
-+------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                           ;
++---------------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path            ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                            ; Library ;
++---------------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+---------+
+; ../complex_comb_logic/Ripple_Carry_Adder.sv ; yes             ; User SystemVerilog HDL File  ; C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Ripple_Carry_Adder.sv ;         ;
+; ../complex_comb_logic/Full_Adder.sv         ; yes             ; User SystemVerilog HDL File  ; C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Full_Adder.sv         ;         ;
++---------------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary          ;
-+---------------------------------------------+--------+
-; Resource                                    ; Usage  ;
-+---------------------------------------------+--------+
-; Estimated Total logic elements              ; 12     ;
-;                                             ;        ;
-; Total combinational functions               ; 12     ;
-; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 8      ;
-;     -- 3 input functions                    ; 0      ;
-;     -- <=2 input functions                  ; 4      ;
-;                                             ;        ;
-; Logic elements by mode                      ;        ;
-;     -- normal mode                          ; 12     ;
-;     -- arithmetic mode                      ; 0      ;
-;                                             ;        ;
-; Total registers                             ; 0      ;
-;     -- Dedicated logic registers            ; 0      ;
-;     -- I/O registers                        ; 0      ;
-;                                             ;        ;
-; I/O pins                                    ; 36     ;
-;                                             ;        ;
-; Embedded Multiplier 9-bit elements          ; 0      ;
-;                                             ;        ;
-; Maximum fan-out node                        ; out1~0 ;
-; Maximum fan-out                             ; 1      ;
-; Total fan-out                               ; 80     ;
-; Average fan-out                             ; 0.95   ;
-+---------------------------------------------+--------+
++------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                            ;
++---------------------------------------------+--------------------------+
+; Resource                                    ; Usage                    ;
++---------------------------------------------+--------------------------+
+; Estimated Total logic elements              ; 9                        ;
+;                                             ;                          ;
+; Total combinational functions               ; 9                        ;
+; Logic element usage by number of LUT inputs ;                          ;
+;     -- 4 input functions                    ; 2                        ;
+;     -- 3 input functions                    ; 6                        ;
+;     -- <=2 input functions                  ; 1                        ;
+;                                             ;                          ;
+; Logic elements by mode                      ;                          ;
+;     -- normal mode                          ; 9                        ;
+;     -- arithmetic mode                      ; 0                        ;
+;                                             ;                          ;
+; Total registers                             ; 0                        ;
+;     -- Dedicated logic registers            ; 0                        ;
+;     -- I/O registers                        ; 0                        ;
+;                                             ;                          ;
+; I/O pins                                    ; 14                       ;
+;                                             ;                          ;
+; Embedded Multiplier 9-bit elements          ; 0                        ;
+;                                             ;                          ;
+; Maximum fan-out node                        ; Full_Adder:Adder1|Add1~0 ;
+; Maximum fan-out                             ; 3                        ;
+; Total fan-out                               ; 47                       ;
+; Average fan-out                             ; 1.27                     ;
++---------------------------------------------+--------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                  ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+---------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name ; Entity Name   ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+---------------+--------------+
-; |XNOR_GATE_8in             ; 12 (12)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 36   ; 0            ; 0          ; |XNOR_GATE_8in      ; XNOR_GATE_8in ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+---------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                   ; Entity Name        ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------+--------------------+--------------+
+; |Ripple_Carry_Adder        ; 9 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 14   ; 0            ; 0          ; |Ripple_Carry_Adder                   ; Ripple_Carry_Adder ; work         ;
+;    |Full_Adder:Adder1|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Ripple_Carry_Adder|Full_Adder:Adder1 ; Full_Adder         ; work         ;
+;    |Full_Adder:Adder2|     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Ripple_Carry_Adder|Full_Adder:Adder2 ; Full_Adder         ; work         ;
+;    |Full_Adder:Adder3|     ; 4 (4)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Ripple_Carry_Adder|Full_Adder:Adder3 ; Full_Adder         ; work         ;
+;    |Full_Adder:Adder4|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Ripple_Carry_Adder|Full_Adder:Adder4 ; Full_Adder         ; work         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -231,30 +235,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Top-level Entity: |XNOR_GATE_8in ;
-+----------------+-------+------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                 ;
-+----------------+-------+------------------------------------------------------+
-; WIDTH          ; 4     ; Signed Integer                                       ;
-+----------------+-------+------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 36                          ;
-; cycloneiii_lcell_comb ; 16                          ;
-;     normal            ; 16                          ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 4                           ;
-;         4 data inputs ; 8                           ;
+; boundary_port         ; 14                          ;
+; cycloneiii_lcell_comb ; 9                           ;
+;     normal            ; 9                           ;
+;         2 data inputs ; 1                           ;
+;         3 data inputs ; 6                           ;
+;         4 data inputs ; 2                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 3.00                        ;
-; Average LUT depth     ; 3.00                        ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 3.17                        ;
 +-----------------------+-----------------------------+
 
 
@@ -273,10 +267,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Sat Oct 17 12:23:12 2026
+    Info: Processing started: Sat Oct 17 13:54:22 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off NETLISTVIEWER -c NETLISTVIEWER
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 24 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /users/abhir/desktop/hackathon/gate-or-gates/complex_comb_logic/ripple_carry_adder.sv
+    Info (12023): Found entity 1: Ripple_Carry_Adder File: C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Ripple_Carry_Adder.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file /users/abhir/desktop/hackathon/gate-or-gates/complex_comb_logic/full_adder.sv
+    Info (12023): Found entity 1: Full_Adder File: C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Full_Adder.sv Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file /users/abhir/desktop/hackathon/gate-or-gates/2+ input gates/xor_gate_8in.sv
     Info (12023): Found entity 1: XOR_GATE_8in File: C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/XOR_GATE_8in.sv Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file /users/abhir/desktop/hackathon/gate-or-gates/2+ input gates/xnor_gate_8in.sv
@@ -305,17 +303,18 @@ Info (12021): Found 1 design units, including 1 entities, in source file /users/
     Info (12023): Found entity 1: NAND_GATE File: C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NAND_GATE.sv Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file /users/abhir/desktop/hackathon/gate-or-gates/basic gates/comb version/and_gate.sv
     Info (12023): Found entity 1: AND_GATE File: C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/AND_GATE.sv Line: 4
-Info (12127): Elaborating entity "XNOR_GATE_8in" for the top level hierarchy
+Info (12127): Elaborating entity "Ripple_Carry_Adder" for the top level hierarchy
+Info (12128): Elaborating entity "Full_Adder" for hierarchy "Full_Adder:Adder1" File: C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/complex_comb_logic/Ripple_Carry_Adder.sv Line: 27
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 48 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 32 input pins
-    Info (21059): Implemented 4 output pins
-    Info (21061): Implemented 12 logic cells
+Info (21057): Implemented 23 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 9 input pins
+    Info (21059): Implemented 5 output pins
+    Info (21061): Implemented 9 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4800 megabytes
-    Info: Processing ended: Sat Oct 17 12:23:17 2026
+    Info: Processing ended: Sat Oct 17 13:54:27 2026
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:11
 
