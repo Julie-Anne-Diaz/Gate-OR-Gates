@@ -1,0 +1,64 @@
+{C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/XOR_GATE_8in.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/XOR_GATE_8in.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module XOR_GATE_8in
+
+Top level modules:
+	XOR_GATE_8in
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/OR_GATE_8in.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/OR_GATE_8in.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module OR_GATE_8in
+
+Top level modules:
+	OR_GATE_8in
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/NOT_GATE_8in.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/NOT_GATE_8in.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module NOT_GATE_8in
+
+Top level modules:
+	NOT_GATE_8in
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/NAND_GATE_8in.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/NAND_GATE_8in.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module NAND_GATE_8in
+
+Top level modules:
+	NAND_GATE_8in
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/ALL_GATES_8in_tb.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/ALL_GATES_8in_tb.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module ALL_GATES_8in_tb
+
+Top level modules:
+	ALL_GATES_8in_tb
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/NOR_GATE_8in.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/NOR_GATE_8in.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module NOR_GATE_8in
+
+Top level modules:
+	NOR_GATE_8in
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/AND_GATE_8in.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/AND_GATE_8in.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module AND_GATE_8in
+
+Top level modules:
+	AND_GATE_8in
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/XNOR_GATE_8in.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/XNOR_GATE_8in.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module XNOR_GATE_8in
+
+Top level modules:
+	XNOR_GATE_8in
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/ALL_GATES_8in.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/2+ input gates/ALL_GATES_8in.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module ALL_GATES_8in
+
+Top level modules:
+	ALL_GATES_8in
+
+} {} {}}

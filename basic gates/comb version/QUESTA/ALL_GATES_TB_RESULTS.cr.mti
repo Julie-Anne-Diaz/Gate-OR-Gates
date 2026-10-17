@@ -1,0 +1,64 @@
+{C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module ALL_GATES
+
+Top level modules:
+	ALL_GATES
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES_tb.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/ALL_GATES_tb.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module ALL_GATES_tb
+
+Top level modules:
+	ALL_GATES_tb
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NAND_GATE.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NAND_GATE.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module NAND_GATE
+
+Top level modules:
+	NAND_GATE
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOT_GATE.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOT_GATE.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module NOT_GATE
+
+Top level modules:
+	NOT_GATE
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/OR_GATE.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/OR_GATE.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module OR_GATE
+
+Top level modules:
+	OR_GATE
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XOR_GATE.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XOR_GATE.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module XOR_GATE
+
+Top level modules:
+	XOR_GATE
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/AND_GATE.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/AND_GATE.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module AND_GATE
+
+Top level modules:
+	AND_GATE
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOR_GATE.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/NOR_GATE.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module NOR_GATE
+
+Top level modules:
+	NOR_GATE
+
+} {} {}} {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XNOR_GATE.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/Users/abhir/Desktop/hackathon/Gate-OR-Gates/basic gates/comb version/XNOR_GATE.sv}
+QuestaSim-64 vlog 2026.2 Compiler 2026.05 May 18 2026
+-- Compiling module XNOR_GATE
+
+Top level modules:
+	XNOR_GATE
+
+} {} {}}
