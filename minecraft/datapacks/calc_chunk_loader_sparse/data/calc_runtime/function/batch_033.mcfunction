@@ -1,0 +1,34 @@
+execute unless score #running calc_load matches 1 run return 0
+execute in minecraft:overworld run forceload add 928 240
+execute in minecraft:overworld run forceload add 928 256
+execute in minecraft:overworld run forceload add 928 864
+execute in minecraft:overworld run forceload add 944 -16
+execute in minecraft:overworld run forceload add 944 0
+execute in minecraft:overworld run forceload add 944 16
+execute in minecraft:overworld run forceload add 944 96
+execute in minecraft:overworld run forceload add 944 128
+execute in minecraft:overworld run forceload add 944 144
+execute in minecraft:overworld run forceload add 944 176
+execute in minecraft:overworld run forceload add 944 192
+execute in minecraft:overworld run forceload add 944 208
+execute in minecraft:overworld run forceload add 944 224
+execute in minecraft:overworld run forceload add 944 240
+execute in minecraft:overworld run forceload add 944 256
+execute in minecraft:overworld run forceload add 944 864
+execute in minecraft:overworld run forceload add 960 -16
+execute in minecraft:overworld run forceload add 960 0
+execute in minecraft:overworld run forceload add 960 16
+execute in minecraft:overworld run forceload add 960 96
+execute in minecraft:overworld run forceload add 960 112
+execute in minecraft:overworld run forceload add 960 128
+execute in minecraft:overworld run forceload add 960 144
+execute in minecraft:overworld run forceload add 960 160
+execute in minecraft:overworld run forceload add 960 176
+execute in minecraft:overworld run forceload add 960 192
+execute in minecraft:overworld run forceload add 960 208
+execute in minecraft:overworld run forceload add 960 224
+execute in minecraft:overworld run forceload add 960 240
+execute in minecraft:overworld run forceload add 960 256
+execute in minecraft:overworld run forceload add 960 864
+execute in minecraft:overworld run forceload add 976 -16
+schedule function calc_runtime:batch_034 10t replace

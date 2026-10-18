@@ -1,0 +1,34 @@
+execute unless score #running calc_load matches 1 run return 0
+execute in minecraft:overworld run forceload add 176 80
+execute in minecraft:overworld run forceload add 176 112
+execute in minecraft:overworld run forceload add 176 160
+execute in minecraft:overworld run forceload add 176 176
+execute in minecraft:overworld run forceload add 176 192
+execute in minecraft:overworld run forceload add 176 208
+execute in minecraft:overworld run forceload add 176 256
+execute in minecraft:overworld run forceload add 176 336
+execute in minecraft:overworld run forceload add 176 352
+execute in minecraft:overworld run forceload add 176 464
+execute in minecraft:overworld run forceload add 176 480
+execute in minecraft:overworld run forceload add 176 576
+execute in minecraft:overworld run forceload add 176 592
+execute in minecraft:overworld run forceload add 176 608
+execute in minecraft:overworld run forceload add 176 640
+execute in minecraft:overworld run forceload add 176 656
+execute in minecraft:overworld run forceload add 176 688
+execute in minecraft:overworld run forceload add 176 864
+execute in minecraft:overworld run forceload add 192 0
+execute in minecraft:overworld run forceload add 192 16
+execute in minecraft:overworld run forceload add 192 32
+execute in minecraft:overworld run forceload add 192 48
+execute in minecraft:overworld run forceload add 192 64
+execute in minecraft:overworld run forceload add 192 80
+execute in minecraft:overworld run forceload add 192 96
+execute in minecraft:overworld run forceload add 192 112
+execute in minecraft:overworld run forceload add 192 128
+execute in minecraft:overworld run forceload add 192 144
+execute in minecraft:overworld run forceload add 192 160
+execute in minecraft:overworld run forceload add 192 176
+execute in minecraft:overworld run forceload add 192 192
+execute in minecraft:overworld run forceload add 192 208
+schedule function calc_runtime:batch_014 10t replace

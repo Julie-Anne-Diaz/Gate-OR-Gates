@@ -1,0 +1,31 @@
+CALC OCCUPIED-CHUNK LOADER
+Replace the previous calc_chunk_loader folder with this whole
+calc_chunk_loader_sparse folder in the active SERVER WORLD datapacks directory.
+Do not leave both packs installed: they define the same calc_runtime functions.
+
+Finish construction first. Then:
+/reload
+/function calc_runtime:start
+
+Start cancels old loader schedules and clears the old 5040-chunk rectangle's
+force-load tickets before adding ONLY the 1424 occupied chunks, 32 per 10 ticks.
+This cleanup also removes unrelated force-load tickets inside the old rectangle.
+It does not remove blocks. Do not run the construction builder at the same time.
+
+Wait for All 1424 occupied CALC chunks loaded, then allow redstone to settle.
+/function calc_runtime:check
+/function calc_runtime:stop
+
+Stop releases the 1424 occupied chunk tickets; blocks remain. Run stop before
+removing the pack. Tickets otherwise persist across server restarts.
+
+Coordinates are fixed for the supplied build origin (8,-30,-9). Selection is
+computed from every non-air placement in the original calc.mcfunction, including
+wires, repeaters, torches, levers, lamps, support blocks and display decoration.
+There is no rectangular padding. Two support/decor-only chunks are included.
+Air-clearing-only and empty chunks are excluded. See occupied_chunks.json.
+
+1424 chunks is about 72% fewer than 5040, but can still cause significant load.
+This checks chunk availability; it does not restore missing blocks or validate
+circuit logic/timing. Client render distance can still hide loaded server chunks.
+Not tested inside Minecraft.
