@@ -2,11 +2,13 @@
 
 **Turn HDL into Minecraft redstone. Control it with real hardware.**
 
+**New teammate? [Start here: the complete setup, from installs to your first working circuit](docs/START_HERE.md).**
+
 Write a circuit in SystemVerilog, synthesize it with Yosys, place its gates with
 OR-Tools, and export a Minecraft build function. Connect a DE10-Lite through an
 Arduino UNO R3 to drive the circuit with ten switches and two pushbuttons.
 
-[Start a local workspace](docs/LOCAL_WORKSPACE.md) ·
+[Complete setup](docs/START_HERE.md) ·
 [Wire the hardware](docs/WIRING_AND_PROGRAMMING.md) ·
 [Install the builder](docs/REDSTONE_BUILDER.md) ·
 [Generate a circuit](docs/HDL_PIPELINE.md) ·
@@ -16,7 +18,7 @@ Arduino UNO R3 to drive the circuit with ten switches and two pushbuttons.
 
 | I want to… | Start here |
 |---|---|
-| Build and test on my own computer | [Local workspace](docs/LOCAL_WORKSPACE.md) |
+| Start from scratch and get everything running | [Complete setup guide](docs/START_HERE.md) |
 | Program the FPGA and Arduino | [Wiring and programming](docs/WIRING_AND_PROGRAMMING.md) |
 | Convert my HDL into blocks | [HDL pipeline reference](docs/HDL_PIPELINE.md) |
 | Install the builder and place gates or the ALU | [Redstone builder setup](docs/REDSTONE_BUILDER.md) |
@@ -30,7 +32,7 @@ Each teammate runs an independent **Minecraft Java 26.3** workspace and joins
 
 1. Clone this repository or download and extract its ZIP.
 2. Install Java 25, Python 3.10+, Quartus Prime Lite with MAX 10 support, and
-   Arduino IDE. [Full setup instructions](docs/LOCAL_WORKSPACE.md).
+   Arduino IDE. [Full setup instructions](docs/START_HERE.md).
 3. Wire and program the devices using [this guide](docs/WIRING_AND_PROGRAMMING.md).
 4. Open `hardware_bridge` and run **01_Setup.bat**. Select Java and your Arduino
    COM port. Setup downloads the official server, installs the Python bridge

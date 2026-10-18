@@ -1,5 +1,9 @@
 # Local Minecraft workspace
 
+**First time? Follow [START_HERE.md](START_HERE.md) in order. It includes all software installations, wiring, programming, server setup, and the final input tests.**
+
+This page is the shorter reference for configuration, daily use and troubleshooting.
+
 Each teammate runs their own local server and joins `localhost`. The server is
 private to that computer; it needs no public address, account with a tunnel
 service, router changes, or client mods. The hardware bridge uses local RCON.

@@ -4,7 +4,9 @@ Ten DE10-Lite switches control steady Minecraft lever states. KEY0 and KEY1
 produce fixed four-tick pulses through an Arduino UNO R3 and the local Python
 bridge. Each teammate can run their own independent world on `localhost`.
 
-**Start here:** [local workspace setup](../docs/LOCAL_WORKSPACE.md).
+**Start here:** [the complete from-scratch guide](../docs/START_HERE.md).
+It covers Minecraft/Java/Python installation, wiring, Quartus, Arduino, server setup,
+and testing all controls in one sequence.
 
 | File or folder | Purpose |
 |---|---|
