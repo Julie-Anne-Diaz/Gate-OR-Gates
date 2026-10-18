@@ -1,0 +1,29 @@
+{
+  "source": "C:\\Users\\kiran\\Downloads\\calc.mcfunction",
+  "source_sha256": "dafc0a3dbc31d69fabbf11df827440a8a828175313c4a65290a8336ba0ed7ef5",
+  "blocks": 132756,
+  "bounds": {
+    "x": [
+      6,
+      1421
+    ],
+    "y": [
+      -4,
+      15
+    ],
+    "z": [
+      -1,
+      880
+    ]
+  },
+  "batch_size": 2000,
+  "placement_batches": 134,
+  "final_verification_batches": 99,
+  "jobs": 149,
+  "tiles": 49,
+  "max_chunk_columns_per_window_including_anchor": 82,
+  "namespace": "calc_builder",
+  "functions": 1134,
+  "minecraft_tested": false,
+  "all_circuit_chunks_kept_ticking": false
+}

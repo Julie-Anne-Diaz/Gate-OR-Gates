@@ -1,0 +1,15 @@
+setblock ~152 ~9 ~483 minecraft:redstone_wire replace
+setblock ~152 ~9 ~484 minecraft:redstone_wire replace
+setblock ~152 ~9 ~485 minecraft:redstone_wire replace
+setblock ~152 ~9 ~486 minecraft:redstone_wire replace
+setblock ~152 ~9 ~487 minecraft:redstone_wire replace
+setblock ~152 ~9 ~488 minecraft:repeater[facing=south,delay=1] replace
+setblock ~152 ~9 ~489 minecraft:redstone_wire replace
+setblock ~152 ~9 ~490 minecraft:redstone_wire replace
+setblock ~152 ~9 ~491 minecraft:redstone_wire replace
+setblock ~152 ~9 ~492 minecraft:redstone_wire replace
+setblock ~208 ~9 ~489 minecraft:redstone_wire replace
+setblock ~208 ~9 ~490 minecraft:redstone_wire replace
+setblock ~208 ~9 ~491 minecraft:redstone_wire replace
+setblock ~208 ~9 ~492 minecraft:redstone_wire replace
+setblock ~208 ~9 ~493 minecraft:redstone_wire replace

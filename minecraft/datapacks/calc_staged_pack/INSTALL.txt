@@ -1,0 +1,48 @@
+CALC STAGED BUILDER — Minecraft Java 26.3
+
+INSTALL
+Copy the ENTIRE calc_staged_pack folder into your active world's datapacks folder.
+On your localhost server use the server world folder (level-name in server.properties).
+Do not copy only build.mcfunction. All supporting functions are required.
+This pack uses calc_builder, so it can coexist with the redstone datapack.
+
+BUILD
+Choose a fresh, empty, dry site. Your standing position is the build origin.
+The build replaces blocks X +6..+1421, Z -1..+880 and Y -4..+15 from that origin.
+The displays have buried wiring, so expect excavation four blocks below your feet.
+Stand at Y -60 through 304 so the entire build fits within overworld height limits.
+Use an isolated area without other force-load jobs in the same footprint.
+
+/reload
+/function calc_builder:build
+
+You may move after starting. The saved origin marker holds the placement position.
+Keep the server running; a paused single-player world will pause progress.
+There are 134 placement batches of up to 2000 blocks plus 99 verification batches.
+The build clears requested air first, places all supports, then components, then
+verifies every block type. Wait for CALC complete. Chunk loading and lag affect time;
+several minutes is a reasonable allowance, not a fixed completion promise.
+
+CANCEL OR RELEASE
+/function calc_builder:release
+This stops scheduled work, releases this build's chunk windows and removes its
+origin marker. It does not delete placed blocks. It also releases any unrelated
+force-load tickets inside this footprint, so avoid overlapping other loaders.
+After release a new build uses your current position; this is not a resume command.
+If a missing-block check stops construction, record the reported batch name before
+releasing. The pack does not silently repair or change the supplied circuit.
+
+IMPORTANT OPERATION LIMIT
+The full footprint spans roughly 5100 chunk columns. This builder deliberately
+loads only a moving 128-by-128-block window: at most 81 columns plus one anchor.
+At completion it releases the construction window and retains only the anchor
+chunk until release. The whole calculator is NOT kept ticking. Successful placement
+does not establish that such a large redstone circuit can operate across unloaded
+chunks. Operating it requires a separate footprint/loading or compaction plan.
+
+VALIDATION
+132756 unique original block placements preserved exactly, with no conflicts.
+All generated function references resolve. Block states are preserved; verification
+checks block types because redstone power states change during normal operation.
+The pack has not been run in Minecraft. This stages the supplied file; it does not
+validate or redesign calculator logic, timing, or input controls.
