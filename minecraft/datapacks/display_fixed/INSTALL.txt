@@ -1,0 +1,8 @@
+Copy this entire display_fixed folder into the ACTIVE SERVER WORLD datapacks folder.
+On a dedicated server, this is under its level-name world directory (see server.properties), not necessarily .minecraft/saves.
+Disable/remove the old datapack copy defining redstone:display, or replace its display.mcfunction and whole display_staged folder with these matching files. Keep other unrelated functions.
+Do not use the older display_staged.mcfunction entry point.
+Run /reload, then /function redstone:display_staged/release to clear the existing anchor.
+Stand at the desired build origin and run /function redstone:display.
+The build places 11965 blocks in 30 batches, with support blocks first. Wait for completion.
+Before quitting/testing completion, use /function redstone:display_staged/release to release chunk loading.
