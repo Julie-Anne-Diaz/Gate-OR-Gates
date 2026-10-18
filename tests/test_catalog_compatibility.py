@@ -1,4 +1,4 @@
-"""The exporter must work with the shared catalog and no local helper files."""
+"""The exporter must work with the shared catalog and its hex component file."""
 import copy
 import importlib.util
 import json
@@ -36,8 +36,8 @@ class CatalogCompatibilityTests(unittest.TestCase):
         self.assertEqual(len(library.STANDALONE_GATES['ASYNCDFF'].blocks), 56)
 
     @unittest.skipUnless(importlib.util.find_spec('ortools'), 'OR-Tools unavailable')
-    def test_two_file_distribution_generates_shared_clock_and_feedback(self):
-        # No tests, backups, andtemplate.py, or helper modules in this directory.
+    def test_runtime_distribution_generates_shared_clock_and_feedback(self):
+        # No tests, backups, or andtemplate.py in this directory.
         # Q0 feeds D1, Q1 feeds D0; both DFFs use one top-level clock.
         raw = {'modules': {'counterexample': {
             'ports': {'clk': {'direction': 'input', 'bits': [2]},
@@ -47,7 +47,7 @@ class CatalogCompatibilityTests(unittest.TestCase):
                 'b': {'type': '$_DFF_P_', 'connections': {'D': [3], 'C': [2], 'Q': [4]}}}}}}
         with tempfile.TemporaryDirectory() as directory:
             folder = Path(directory)
-            for filename in ('hdl_to_minecraft.py', 'gate_templates.py'):
+            for filename in ('hdl_to_minecraft.py', 'gate_templates.py', 'sevenseg_hex_template.py'):
                 shutil.copyfile(ROOT / filename, folder / filename)
             (folder / 'input.json').write_text(json.dumps(raw), encoding='utf-8')
             result = subprocess.run([

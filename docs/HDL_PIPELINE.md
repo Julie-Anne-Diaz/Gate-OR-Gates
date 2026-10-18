@@ -22,11 +22,50 @@ HDL still maps to basic gates and register cells, followed by OR-Tools placement
 and automatic wiring; combined `ANDASYNCDFF`/`SYNCDFF` catalog entries do not change
 the existing HDL mapping. Synchronous-reset HDL is not newly supported here.
 
-If the repository already has this updated catalog, the runtime files to push
-for this integration are `hdl_to_minecraft.py` and `requirements.txt`. There is no
-additional Python helper module. The regression tests are useful to commit too,
-but are not runtime dependencies. Existing generated Minecraft files do not need
-to be rebuilt just for this compatibility update.
+The runtime files are `hdl_to_minecraft.py`, `gate_templates.py`,
+`sevenseg_hex_template.py`, and `requirements.txt`. The shared catalog imports
+the hex-display component, so keep both catalog files beside the exporter.
+The regression tests are useful to commit too, but are not runtime dependencies.
+Existing generated Minecraft files do not need to be rebuilt just for this update.
+
+### Stopwatch demo with the existing hex-display component
+
+`DEMO/TOP_LVL.sv` remains the FPGA design. `DEMO/MINECRAFT_TOP.sv` adapts its
+stopwatch for Minecraft: one count per redstone clock cycle, six control inputs
+(`rst`, `go`, `pause`, `lap`, `stop`, `show_lap`), and four binary digit buses.
+The switch synchronizers, FSM and datapath behavior are retained. The counter
+uses 14 bits, sufficient for every reachable value from 0 through 9999, and a
+shift/add-3 decimal converter replaces division. These are decimal count steps;
+redstone propagation does not make them accurate hundredths of a second.
+
+```powershell
+. C:\oss-cad-suite\environment.ps1
+.\venv\Scripts\python.exe hdl_to_minecraft.py DEMO/MINECRAFT_TOP.sv DEMO/FSM_STOPWATCH.sv DEMO/FSM_STOPWATCH_DATAPATH.sv DEMO/tick_gen.sv --top MINECRAFT_TOP --synth-profile compact --legalize-dffs --output build/demo_stopwatch.json --mcfunction build/demo_stopwatch.mcfunction --clock-source integrated --placer ortools --solver-seconds 1200 --solver-workers 8 --spacing 12 --routing-limit 8000 --progress --hex-display HEX3 HEX2 HEX1 HEX0
+```
+
+`--hex-display` connects each named four-bit output bus `[3:0]` to one copy of
+`SEVENSEG_HEX` from `sevenseg_hex_template.py`. BIT0 receives the least significant
+bit. The component's decoder and upright lamp face are copied from the catalog;
+they are not re-synthesized. Its four manual levers become dust, with isolated
+input leads that restore full signal strength. Only the leads and connections
+from the stopwatch are newly routed. The core output taps remain available.
+HEX3 is the thousands digit and HEX0 is the units digit. The component has no
+decimal-point input, so the FPGA's decimal point and two unused board digits
+are not included.
+
+The generous limits apply only when requested. `--solver-seconds` limits placement
+solving time; routing time is additional. `--routing-limit` raises the default
+2,000-block extent cap without changing normal circuit placement. `--legalize-dffs`
+asks Yosys to preserve reset-to-one and polarity behavior using inverters around
+the supported rising-edge storage cells. All three options are independent.
+`--progress` reports completed connections and remaining connections, resetting
+the count explicitly if a placement requires a new routing pass.
+
+The generated `.routes.json` records display origins, BIT0..BIT3 connections,
+input leads, clock receivers, and wire routes. A completed layout verifies routing
+geometry, not Minecraft sequential timing. The shared clock has propagation skew;
+test reset, start, pause, lap and stop in game before treating it as a working
+stopwatch. The full build must remain loaded and ticking.
 
 Install Yosys with ABC available and put it on PATH, or pass
 `--yosys "C:/path/to/yosys.exe"`. VHDL additionally requires the

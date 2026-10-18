@@ -69,12 +69,18 @@ Copy the generated function into your running world's redstone datapack and
 run `/reload`. The [pipeline reference](docs/HDL_PIPELINE.md) covers supported
 cells, placement, routing, shared clocks, examples, and validation.
 
+The [Minecraft stopwatch demo](docs/HDL_PIPELINE.md#stopwatch-demo-with-the-existing-hex-display-component)
+counts once per redstone clock cycle and connects four existing hex-display
+components. Its wrapper, generation command, and timing limitations are documented
+in the pipeline reference.
+
 ## Where everything lives
 
 | Location | Purpose |
 |---|---|
 | `hdl_to_minecraft.py` | HDL synthesis, netlist conversion, placement and routing |
 | `gate_templates.py` | Minecraft gate and register block templates |
+| `sevenseg_hex_template.py` | Reusable hex decoder and lamp display component |
 | `examples/` | Circuit sources ready for the pipeline |
 | `hardware_bridge/quartus/` | DE10-Lite project and pin assignments |
 | `hardware_bridge/SwitchReader12/` | UNO sketch: ten switches and two buttons |
