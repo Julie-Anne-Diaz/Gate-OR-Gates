@@ -45,9 +45,10 @@ def install_packs(world):
     builder = ROOT.parent/'minecraft/datapacks/redstone'
     archive = ROOT.parent/'minecraft/snapshots/redstone.zip'
     target = world/'datapacks/redstone'
-    if builder.is_dir():
-        if not (builder/'pack.mcmeta').is_file():
-            raise RuntimeError('Builder source is incomplete: minecraft/datapacks/redstone/pack.mcmeta is missing.')
+    has_functions = builder.is_dir() and any(builder.rglob('*.mcfunction'))
+    if builder.is_dir() and not (builder/'pack.mcmeta').is_file():
+        raise RuntimeError('Builder source is incomplete: minecraft/datapacks/redstone/pack.mcmeta is missing.')
+    if has_functions:
         if target.exists() or target.with_suffix('.zip').exists():
             print('Keeping existing datapack: redstone')
         else:

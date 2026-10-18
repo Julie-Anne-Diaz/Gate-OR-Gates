@@ -29,8 +29,9 @@ another working pack. Any external dependencies should be documented with it.
 Minecraft Java 26.3 uses the singular directory name **`function`**.
 
 **Current PR content:** `minecraft/snapshots/redstone.zip` contains the earlier
-seventeen-function snapshot. The team's newest builder folder has not yet been
-provided. Setup prefers `minecraft/datapacks/redstone` when it exists; otherwise
+seventeen-function snapshot. The repository now includes the ready-to-fill builder directory and metadata.
+The team's newest function files have not yet been supplied. Setup prefers
+`minecraft/datapacks/redstone` once it contains `.mcfunction` files; until then
 it extracts the bundled snapshot. It installs one builder pack, not both copies.
 
 ## Option A: automatic installation into a new local workspace
