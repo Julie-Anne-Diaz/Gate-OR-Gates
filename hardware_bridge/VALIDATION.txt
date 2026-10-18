@@ -1,0 +1,30 @@
+Validation: Minecraft Java 26.3 live dedicated-server datapack tests.
+
+20 live checks passed:
+- KEY0 immediate ON
+- pulse drives floor circuit dust
+- ON through tick 3
+- OFF at tick 4 without Python timer
+- pulse clears floor circuit dust
+- queued first pulse ON
+- queued pulses have OFF gap
+- queued second pulse ON
+- queued second pulse OFF
+- simultaneous KEY0 ON
+- simultaneous KEY1 ON
+- simultaneous KEY0 OFF
+- simultaneous KEY1 OFF
+- rebind still switches old pulse OFF
+- rebind does not energize new lever
+- next press uses new binding
+- new binding pulse ends
+- reload fixture ON
+- reload resets active pulse
+- bindings survive reload
+
+Seven Python protocol tests passed (legacy input, V2 counters, startup/hold, rapid press counts, wrap/reset, malformed frames, existing bindings).
+Arduino sketch compiled and ran in a C++ host simulation with simulated GPIO/time: debounce, long hold, release/repress, bounce rejection, simultaneous buttons and SW0/SW9 preservation passed. This is not an AVR hardware compilation.
+All 73 datapack function references resolve; JSON metadata parses; FPGA pin table contains 34 unique assigned pins and matches the board manual.
+Quartus synthesis, Arduino AVR compilation/upload and physical board testing must be completed on your PC. Hardware was not available in this environment.
+
+Repository integration: protocol and setup tests also verify both source datapacks install from their repository locations; existing runtime packs/configuration are preserved. Documentation links and datapack function references checked. Windows launch scripts are not yet end-to-end tested on Windows.

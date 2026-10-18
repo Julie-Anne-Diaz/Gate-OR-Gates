@@ -1,0 +1,1 @@
+$execute in $(dimension) if block $(x) $(y) $(z) minecraft:lever unless block $(x) $(y) $(z) minecraft:lever[powered=true] run setblock $(x) $(y) $(z) minecraft:lever[face=$(face),facing=$(facing),powered=true] replace

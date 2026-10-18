@@ -1,0 +1,1 @@
+tellraw @s {"text":"Look at lever: /function bridge:bind/sw0 through sw9, or /function bridge:bind/key0 and key1. KEY buttons pulse for 4 ticks. Stand: bridge:stand/key0. Unbind: bridge:unbind/key0.","color":"aqua"}
