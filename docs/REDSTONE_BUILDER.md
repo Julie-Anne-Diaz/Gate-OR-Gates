@@ -161,3 +161,20 @@ is covered by the [HDL pipeline reference](HDL_PIPELINE.md).
 
 An ordinary single-player world can run the builder with commands allowed. The
 physical input bridge in this project uses the separate local-server solution.
+
+
+
+## Updating the display and other builder functions
+
+After pulling new teammate changes:
+
+1. Stop the bridge with Ctrl+C and type `stop` in the server console. Wait for it to finish saving.
+2. Double-click `hardware_bridge/04_Update_Datapacks.bat`. It refreshes the repository-managed packs in the active world named by `runtime/server.properties`. Previous copies are saved in `hardware_bridge/runtime/datapack_backups/`. Unrelated installed packs and world blocks are kept.
+3. Start `hardware_bridge/02_Start.bat` and join Minecraft.
+4. Stand at the desired build origin in the Overworld and run `/function redstone:display`. Use an empty area: this display spans roughly 320 by 80 blocks and places 11,965 blocks in 30 batches. Wait for the completion message.
+
+Fresh setup now installs **all complete packs** under `minecraft/datapacks/`, including `display_fixed`, plus `bridge_controls`. The display entry point and its `display_staged` helper directory must stay together in `display_fixed`; copying only `display.mcfunction` will fail. The ordinary gates remain in the `redstone` pack. Both packs intentionally use the `redstone:` namespace.
+
+If the display reports an existing anchor, `/function redstone:display_staged/release` cancels any pending build and releases its forced chunks; placed blocks remain. Then run the display command again. After a completed build, keep its chunks loaded while operating it. Release them when finished. Do not install a second, older pack defining the same `redstone:display` function. `/datapack list enabled` should show `file/display_fixed`.
+
+Rerunning setup preserves existing installed packs; use **04_Update_Datapacks.bat** to refresh them. New generated functions must have lowercase names without spaces and use the `.mcfunction` extension.
