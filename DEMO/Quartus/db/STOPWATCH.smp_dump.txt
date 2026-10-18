@@ -1,0 +1,8 @@
+
+State Machine - |TOP_LVL|FSM_STOPWATCH:u_fsm|c_state
+Name c_state.LAP_STORE c_state.PAUSED c_state.RUNNING c_state.IDLE c_state.STOPPED 
+c_state.IDLE 0 0 0 0 0 
+c_state.RUNNING 0 0 1 1 0 
+c_state.PAUSED 0 1 0 1 0 
+c_state.LAP_STORE 1 0 0 1 0 
+c_state.STOPPED 0 0 0 1 1 

@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Sat Oct 17 20:51:07 2026
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : STOPWATCH
+Top-level Entity Name : TOP_LVL
+Family : MAX 10
+Total logic elements : 1,124
+    Total combinational functions : 1,113
+    Dedicated logic registers : 68
+Total registers : 68
+Total pins : 61
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0
