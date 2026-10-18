@@ -1,0 +1,26 @@
+# Local runtime files and credentials
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+server.properties
+server.jar
+libraries/
+logs/
+world/
+world_*/
+usercache.json
+ops.json
+whitelist.json
+banned-*.json
+eula.txt
+.env
+.env.*
+playit*.toml
+playit*.exe
+
+# Quartus build output
+quartus/db/
+quartus/incremental_db/
+quartus/output_files/
+quartus/*.qws

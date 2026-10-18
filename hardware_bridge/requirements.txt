@@ -1,0 +1,2 @@
+pyserial==3.5
+mcrcon==0.7.0

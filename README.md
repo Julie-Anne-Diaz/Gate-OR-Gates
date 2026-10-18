@@ -1,5 +1,12 @@
 # Gate-OR-Gates
 
+## Physical switches and buttons
+
+The [hardware bridge setup](hardware_bridge/README.md) connects a DE10-Lite's ten
+switches and two pushbuttons to Minecraft levers using an Arduino UNO R3. See
+[team sharing](hardware_bridge/SHARING.md) to join the live server or share a world
+copy. Hardware controls are separate from the HDL placement/routing pipeline below.
+
 ## HDL to Minecraft
 
 `hdl_to_minecraft.py` is the pipeline entry point. It uses Python 3.10+ and
@@ -633,3 +640,4 @@ hold, reset and reset release for the half-adder. They use Yosys `clk2fflogic` a
 with the installed `simcells.v` models; it needs no extra Python dependency.
 These are logical checks and template geometry checks, not a Minecraft physics
 simulation. [Yosys documents the FF cell semantics here](https://yosyshq.readthedocs.io/projects/yosys/en/latest/cell/gate_reg_ff.html).
+
