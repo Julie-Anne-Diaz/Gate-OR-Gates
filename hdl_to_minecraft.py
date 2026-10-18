@@ -222,7 +222,7 @@ def yosys_quote(path):
 
 
 def synthesize(sources, top, output, yosys="yosys", plugin="ghdl", standard="08",
-               profile="default"):
+               profile="default", legalize_dffs=False):
     """Keep raw Yosys JSON, a reproducible script, and the complete tool log."""
     if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", top):
         raise ValueError("Use a plain HDL identifier for --top.")
@@ -252,6 +252,10 @@ def synthesize(sources, top, output, yosys="yosys", plugin="ghdl", standard="08"
         steps = [f"synth -top {top} -flatten -noabc -run begin:fine",
                  "pmux2shiftx", f"synth -top {top} -noabc -run fine:", "dffunmap -ce-only", "techmap",
                  mapping + " -script +strash;dc2;&get,-n;&dch,-f;&nf,-E,100;&put"]
+    if legalize_dffs:
+        # Preserve preset/polarity semantics with D/Q/control inverters around
+        # the rising-edge, reset-to-zero storage supported by the block catalog.
+        steps.insert(-1, "dfflegalize -cell $_DFF_PP0_ x -cell $_DFF_P_ x")
     script = "\n".join([frontend, f"hierarchy -check -top {top}", *steps, "clean",
                         "check -assert", f"write_json {yosys_quote(output)}", ""])
     script_path = output.with_suffix(".ys")
@@ -1268,12 +1272,15 @@ def integrated_clock_netlist(netlist):
 
 
 def minecraft(netlist, origin=None, spacing=2, offset=(0, 0, 0), placer="ortools", solver_seconds=10,
-              solver_workers=1, clock_source="external"):
+              solver_workers=1, clock_source="external", routing_limit=2000, progress=False):
     """Place with OR-Tools, then connect gates using the redstone router."""
     if placer != "ortools":
         raise ValueError("Only the ortools placer is supported.")
     if clock_source not in {'external', 'integrated'}:
         raise ValueError("Clock source must be external or integrated.")
+    if type(routing_limit) is not int or routing_limit < 1:
+        raise ValueError('--routing-limit must be a positive integer.')
+    netlist = {**netlist, 'routing_limit': routing_limit, 'progress': progress}
     if clock_source == 'integrated':
         netlist = integrated_clock_netlist(netlist)
     commands, layout = ortools_minecraft(netlist, origin, spacing, offset, solver_seconds, solver_workers)
@@ -1337,6 +1344,9 @@ def build_layout(netlist, positions, origin=None, spacing=2, offset=(0, 0, 0), r
         # that ground-only entrances are blocked. Start with layered search.
         priorities[netlist['nets'][0]['bit']] = 0
     for attempt in range(32):
+        if netlist.get('progress'):
+            print(f"Routing pass {attempt+1}: starting "
+                  f"{sum(len(n['sinks']) for n in netlist['nets'])} connections", flush=True)
         # Large register-feedback networks need return corridors as well as
         # forward data/control routes. Start with room for those corridors;
         # keep the established compact policy for the simpler circuits.
@@ -1488,8 +1498,10 @@ def _build_layout_once(netlist, positions, origin=None, spacing=2, offset=(0, 0,
             owners[point] = net["bit"]
     margin = max(16, spacing)
     extent = max([margin] + [abs(v) for p in all_points for v in p]) + margin
-    if extent > 2000:
-        raise ValueError("Layout exceeds this prototype's 2000-block routing limit.")
+    limit = netlist.get('routing_limit', 2000)
+    if extent > limit:
+        raise ValueError(f"Layout extent {extent} exceeds the {limit}-block routing limit. "
+                         "Increase --routing-limit for this build.")
     routes, headroom, signals = [], set(), set()
     competing_approaches = {}
     for net in netlist['nets']:
@@ -1675,6 +1687,9 @@ def _build_layout_once(netlist, positions, origin=None, spacing=2, offset=(0, 0,
                        "repeaters": [{"xyz": p, "xz": [p[0], p[2]],
                                        "output_direction": f, "facing": OPPOSITE[f]}
                                      for p, f in boosts.items()]})
+        if netlist.get('progress') and (len(routes) % 25 == 0 or len(routes) == len(branches)):
+            print(f"Routed {len(routes)}/{len(branches)} connections; "
+                  f"{len(branches)-len(routes)} remaining in this pass", flush=True)
     if 'clock_bindings' in netlist:
         # The reset sign has a ceiling above it; place solids before components.
         components = {p: s for p, s in blocks.items() if any(k in s for k in
@@ -1696,6 +1711,169 @@ def _build_layout_once(netlist, positions, origin=None, spacing=2, offset=(0, 0,
 def write_json(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+
+
+@lru_cache(maxsize=1)
+def connected_hex_template():
+    """Add isolated, full-strength input leads to the existing display macro.
+
+    Its manual levers are inside the stored circuit, not on its footprint edge.
+    Preserve every other catalog block and route only the four new leads.
+    """
+    template = load_templates().STANDALONE_GATES['SEVENSEG_HEX']
+    blocks = {(b.x, b.y, b.z): b.state for b in template.blocks}
+    minx = min(p[0] for p in blocks)
+    maxx = max(p[0] for p in blocks)
+    minz = min(p[2] for p in blocks)
+    maxz = max(p[2] for p in blocks)
+    inputs, leads = {}, []
+    for pin, terminal in template.inputs.items():
+        target = (terminal.x, terminal.y, terminal.z)
+        if terminal.y != 0 or not blocks[target].startswith('minecraft:lever['):
+            raise ValueError(f'SEVENSEG_HEX {pin}: expected the catalog manual input lever.')
+        start = (minx-31, 0, terminal.z)
+        signals = {p for p,s in blocks.items() if any(k in s for k in
+                   ('redstone_wire', 'repeater', 'torch', 'lever'))} - {target}
+        headroom = {(x,y+1,z) for x,y,z in signals}
+        forbidden = {(px,py,pz) for x,y,z in signals
+                     for px,pz in [(x,z), *neighbors((x,z))] for py in range(y-1,y+2)}
+        for dx,dz in ((0,-1), (0,1), (-1,0), (1,0)):
+            approach = (terminal.x+2*dx, terminal.z+2*dz)
+            tail = [(terminal.x+dx,0,terminal.z+dz), target]
+            landing = [(approach[0],0,approach[1]), tail[0]]
+            if any(p in blocks or p in forbidden or (p[0],p[1]-1,p[2]) in blocks
+                   or (p[0],p[1]+1,p[2]) in blocks or p in headroom for p in landing):
+                continue
+            try:
+                path, boosts, _ = route_in_layers([start], approach, {start:0}, set(), blocks,
+                    headroom, signals, (minx-42,maxx+40,minz-32,maxz+32), tail=tail, preferred_y=18)
+            except RoutingError:
+                continue
+            # Restore full power at the old lever location: its internal fanout
+            # was designed for a lever's full signal, not a depleted long lead.
+            boosts[tail[0]] = DIRECTIONS[(-dx,-dz)]
+            break
+        else:
+            raise RoutingError(f'Cannot connect the existing SEVENSEG_HEX {pin} input safely.')
+        entry = (start[0]-2,0,start[2])
+        receiver = (start[0]-1,0,start[2])
+        path = [entry, receiver, *path]
+        boosts[receiver] = 'east'
+        validate_wire_branch(path)
+        blocks[target] = 'minecraft:redstone_wire'
+        for x,y,z in path:
+            blocks.setdefault((x,y-1,z), 'minecraft:stone_bricks')
+            blocks.setdefault((x,y,z), repeater_state(boosts[(x,y,z)])
+                              if (x,y,z) in boosts else 'minecraft:redstone_wire')
+        inputs[pin] = entry
+        leads.append({'pin': pin, 'path_xyz': path,
+                      'repeaters': [{'xyz':p, 'output_direction':d} for p,d in boosts.items()]})
+    return blocks, inputs, leads
+
+
+def attach_hex_displays(commands, layout, buses, progress=False):
+    """Connect four-bit output buses to copies of the last-push display macro.
+
+    Core placement/routing is unchanged. Macro internals are copied, and only
+    new leads and connections are routed. The caller's objects are not mutated.
+    """
+    if not buses or len(set(buses)) != len(buses):
+        raise ValueError('Name each four-bit output bus once in --hex-display.')
+    import copy
+    layout = copy.deepcopy(layout)
+    core_bounds = copy.deepcopy(layout['local_bounds'])
+    ports = {p['name']: p for p in layout['ports']}
+    selected = []
+    for bus in buses:
+        names = [f'{bus}[{i}]' for i in range(4)]
+        if any(n not in ports or ports[n]['direction'] != 'output' for n in names) or any(
+                n.startswith(bus+'[') and n not in names for n in ports):
+            raise ValueError(f'--hex-display {bus} requires a four-bit output bus indexed [3:0].')
+        selected.append([ports[n] for n in names])
+    origin, offset = layout['origin'], layout['offset'] or (0,0,0)
+    # Recover local block coordinates, including block states with sign text.
+    blocks = {}
+    for command in commands:
+        match = re.search(r' run setblock (~?-?\d*) (~?-?\d*) (~?-?\d*) (.*) replace$', command)
+        if match is None:
+            match = re.fullmatch(r'setblock (-?\d+) (-?\d+) (-?\d+) (.*) replace', command)
+        if match is None:
+            raise ValueError('Display composition requires exporter setblock commands.')
+        xyz = tuple(int(v.lstrip('~') or 0) for v in match.groups()[:3])
+        anchor = origin if origin is not None else offset
+        point = tuple(xyz[i]-anchor[i] for i in range(3))
+        if point in blocks:
+            raise ValueError(f'Duplicate core block at {point}.')
+        blocks[point] = match[4]
+    template, terminals, leads = connected_hex_template()
+    minx, maxx = min(p[0] for p in template), max(p[0] for p in template)
+    minz, maxz = min(p[2] for p in template), max(p[2] for p in template)
+    gx = max(p[0] for p in blocks)+64-minx
+    gz = 2-minz
+    displays, pending = [], []
+    for bus, group in zip(buses, selected):
+        name = f'__display_{bus}'
+        for (x,y,z),state in template.items():
+            point = (x+gx,y,z+gz)
+            if point in blocks:
+                raise ValueError(f'Display collision at {point}.')
+            blocks[point] = state
+        display = {'name':name, 'component':'SEVENSEG_HEX', 'bus':bus, 'xz':[gx,gz],
+                   'catalog_file':'sevenseg_hex_template.py', 'inputs':{},
+                   'lead_routes':leads, 'block_count':len(template)}
+        for i,port in enumerate(group):
+            pin = f'BIT{i}'
+            tx,ty,tz = terminals[pin]
+            target = (tx+gx,ty,tz+gz)
+            source = (port['xz'][0],0,port['xz'][1])
+            display['inputs'][pin] = {'bit':port['bit'], 'xyz':target}
+            pending.append((port, source, target, name, pin))
+        displays.append(display)
+        gz += maxz-minz+1+32
+    # Track the real signal distance at each existing output, including fanout.
+    distances = {}
+    for route in layout['routes']:
+        distance = route['initial_signal_distance']
+        boosts = {tuple(r['xyz']) for r in route['repeaters']}
+        for i,p in enumerate(route['path_xyz']):
+            p = tuple(p)
+            if i:
+                distance = 0 if p in boosts else distance+1
+            distances[(route['bit'],p)] = distance
+    connections = []
+    bounds = (min(p[0] for p in blocks)-64, max(p[0] for p in blocks)+64,
+              min(p[2] for p in blocks)-64, max(p[2] for p in blocks)+64)
+    for port, source, target, name, pin in pending:
+        signals = {p for p,s in blocks.items() if any(k in s for k in
+                   ('redstone_wire','repeater','torch','lever'))} - {source,target}
+        headroom = {(x,y+1,z) for x,y,z in signals}
+        initial = distances.get((port['bit'], source), 0)
+        path, boosts, initial = route_in_layers([source], (target[0],target[2]), {source:initial},
+            set(), blocks, headroom, signals, bounds, preferred_y=18, max_states=240000)
+        for x,y,z in path:
+            blocks.setdefault((x,y-1,z), 'minecraft:stone_bricks')
+            blocks.setdefault((x,y,z), repeater_state(boosts[(x,y,z)])
+                              if (x,y,z) in boosts else 'minecraft:redstone_wire')
+        connections.append({'bit':port['bit'], 'source':['port',port['name']], 'sink':[name,pin],
+                            'path_xyz':path, 'initial_signal_distance':initial,
+                            'repeaters':[{'xyz':p,'output_direction':d,'facing':OPPOSITE[d]}
+                                         for p,d in boosts.items()]})
+        if progress:
+            print(f"Display connections: {len(connections)}/{len(pending)} routed; "
+                  f"{len(pending)-len(connections)} remaining", flush=True)
+    layout['displays'] = displays
+    layout['display_connections'] = connections
+    layout['local_bounds'] = {axis:[min(p[i] for p in blocks),max(p[i] for p in blocks)]
+                              for i,axis in enumerate(('x','y','z'))}
+    layout['block_count'] = len(blocks)
+    layout['display_composition'] = {
+        'core_bounds':core_bounds, 'core_block_count':len(commands),
+        'display_count':len(displays), 'added_blocks':len(blocks)-len(commands),
+        'connection_wire_steps':sum(len(r['path_xyz'])-1 for r in connections)}
+    components = {p:s for p,s in blocks.items() if any(k in s for k in
+                  ('redstone_wire','repeater','torch','lever','sign'))}
+    supports = {p:s for p,s in blocks.items() if p not in components}
+    return block_commands(supports,origin,offset)+block_commands(components,origin,offset), layout
 
 
 def gate_test_netlist(selection="ALL"):
@@ -1732,7 +1910,11 @@ def main():
     parser.add_argument("--std", choices=["93", "08"], default="08")
     parser.add_argument("--synth-profile", choices=["default", "compact"], default="default",
                         help="Opt into case-selector and ABC edge-cost optimization; requires HDL sources.")
+    parser.add_argument("--legalize-dffs", action="store_true",
+                        help="Map register polarities/presets to the integrated storage cells during synthesis.")
     parser.add_argument("--mcfunction", type=Path, help="Also export supported layouts to Minecraft Java commands.")
+    parser.add_argument("--hex-display", nargs='+', metavar='BUS',
+                        help="Connect each four-bit output bus to the existing SEVENSEG_HEX component.")
     parser.add_argument("--clock-source", choices=['external', 'integrated'], default='external',
                         help="Use integrated for one redstone oscillator per HDL clock domain, with shared clock wiring.")
     placement = parser.add_mutually_exclusive_group()
@@ -1742,6 +1924,10 @@ def main():
                            help="Offset from the executing player's feet; default: 0 0 0.")
     parser.add_argument("--spacing", type=int, default=2,
                         help="Minimum empty blocks between lanes (default: 2; fanout uses at least 4).")
+    parser.add_argument("--routing-limit", type=int, default=2000,
+                        help="Maximum routing extent in blocks; raise explicitly for very large circuits.")
+    parser.add_argument("--progress", action='store_true',
+                        help="Report completed connections and remaining routes in each routing pass.")
     parser.add_argument("--placer", choices=["ortools"], default="ortools",
                         help="OR-Tools is the active placement algorithm.")
     parser.add_argument("--solver-seconds", type=float, default=10,
@@ -1750,10 +1936,12 @@ def main():
                         help="Parallel CP-SAT workers; default 1. Multiple workers may change placement results.")
     args = parser.parse_args()
     try:
+        if args.hex_display and (not args.mcfunction or args.gate_test or args.template_test or args.bridge_demo):
+            raise ValueError('--hex-display requires an HDL/JSON circuit and --mcfunction.')
         if args.clock_source == 'integrated' and (args.template_test or args.gate_test or args.bridge_demo or not args.mcfunction):
             raise ValueError("--clock-source integrated requires an HDL/JSON circuit and --mcfunction.")
-        if args.synth_profile != "default" and (args.from_json or args.gate_test or args.bridge_demo or args.template_test):
-            raise ValueError("--synth-profile requires HDL sources; it cannot simplify --from-json.")
+        if (args.synth_profile != "default" or args.legalize_dffs) and (args.from_json or args.gate_test or args.bridge_demo or args.template_test):
+            raise ValueError("--synth-profile/--legalize-dffs require HDL sources; they cannot simplify --from-json.")
         if args.template_test:
             if args.sources or args.from_json or args.top or args.gate_test or args.bridge_demo or not args.mcfunction:
                 raise ValueError("Use --template-test ASYNCDFF with --mcfunction, without HDL or other test modes.")
@@ -1791,7 +1979,7 @@ def main():
             raw_path = args.from_json
         else:
             synthesize(args.sources, args.top, args.output, args.yosys, args.ghdl_plugin, args.std,
-                       args.synth_profile)
+                       args.synth_profile, args.legalize_dffs)
             raw_path = args.output
         if raw_path is not None:
             netlist = basic_netlist(json.loads(raw_path.read_text(encoding="utf-8")), args.top)
@@ -1807,7 +1995,15 @@ def main():
         if args.mcfunction:
             commands, routes = minecraft(netlist, tuple(args.origin) if args.origin is not None else None,
                                          args.spacing, tuple(args.offset), args.placer, args.solver_seconds,
-                                         args.solver_workers, args.clock_source)
+                                         args.solver_workers, args.clock_source, args.routing_limit, args.progress)
+            if args.hex_display:
+                # Retain the expensive core result even if display attachment
+                # fails, so it can be inspected and reused without another run.
+                core_path = args.mcfunction.with_name(args.mcfunction.stem+'.core.mcfunction')
+                core_path.parent.mkdir(parents=True, exist_ok=True)
+                core_path.write_text('\n'.join(commands)+'\n', encoding='utf-8')
+                write_json(core_path.with_suffix('.routes.json'), routes)
+                commands, routes = attach_hex_displays(commands, routes, args.hex_display, args.progress)
             args.mcfunction.parent.mkdir(parents=True, exist_ok=True)
             header = ("# Player-relative: run this function as a player standing on the floor.\n"
                       "# Supports replace floor blocks at feet Y - 1; build extends east (+X) and south (+Z).\n"
@@ -1823,6 +2019,9 @@ def main():
             metrics = routes['placement']
             print(f"Placer: {metrics['method']}; wire steps: {metrics['wire_steps']}; "
                   f"area: {metrics['horizontal_area']}; bridges: {metrics['bridges']}")
+            if routes.get('displays'):
+                print(f"Displays: {len(routes['displays'])} existing SEVENSEG_HEX components; "
+                      f"core placement metrics above; full bounds: {routes['local_bounds']}")
             for clock in routes.get('clocks', []):
                 print(f"Clock: integrated oscillator for {clock['hdl_ports']}; "
                       f"existing clock lever at local {clock['trigger_local_xyz']}")
