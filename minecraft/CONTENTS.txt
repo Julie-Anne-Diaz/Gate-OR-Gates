@@ -1,0 +1,20 @@
+Generated function snapshot from the host-provided function(2).zip.
+These are not the host current world save or a fresh export of the latest repo.
+
+/function redstone:alu_compact
+/function redstone:and
+/function redstone:and_8
+/function redstone:and_8_ortools
+/function redstone:and_chain
+/function redstone:asyncdff
+/function redstone:border
+/function redstone:build
+/function redstone:full_adder
+/function redstone:mixed_chain
+/function redstone:mux_2
+/function redstone:mux_4
+/function redstone:test_all_gates
+/function redstone:test_and
+/function redstone:test_asyncdff
+/function redstone:test_gate_asyncdffs
+/function redstone:test_xnor

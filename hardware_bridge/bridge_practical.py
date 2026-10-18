@@ -1,11 +1,12 @@
 """Ten switch inputs and two fixed-pulse DE10 buttons; vanilla Minecraft 26.3."""
 import getpass
+import os
 import re
 import time
 import serial
 from mcrcon import MCRcon
 
-PORT = "COM10"
+PORT = os.environ.get("DE10_SERIAL_PORT", "COM10")
 RCON_HOST = "127.0.0.1"
 RCON_PORT = 25575
 MAX_REPLAY = 32
@@ -65,7 +66,7 @@ def press_deltas(previous, current):
 
 
 def main():
-    password = getpass.getpass("RCON password: ")
+    password = os.environ.get("DE10_RCON_PASSWORD") or getpass.getpass("RCON password: ")
     print("Close Serial Monitor. Ctrl+C stops the bridge.")
     while True:
         try:
