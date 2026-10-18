@@ -1588,6 +1588,11 @@ GATES: dict[str, GateTemplate] = {
 }
 
 
+from sevenseg_hex_template import make_sevenseg_hex
+
+GATES["SEVENSEG_HEX"] = make_sevenseg_hex(Block, Terminal, GateTemplate)
+
+
 #GUYS IMPORTANT NOTE. We have to change the lever for redstone for gates without the initial inputs.
 # i thought of a method. when placing the redstone torch, for a terminal, we can check if there is already a piece of redstone wire there, and then if there is, we use a keep command, and if not, we place it. 
 
