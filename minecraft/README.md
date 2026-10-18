@@ -1,5 +1,10 @@
 # Minecraft build functions
 
+**Setup guide:** [install the builder, load both packs, and place circuits](../docs/REDSTONE_BUILDER.md).
+
+A current complete team pack can be added at `minecraft/datapacks/redstone/`.
+Setup prefers that folder; the archive below is the fallback snapshot.
+
 [`snapshots/redstone.zip`](snapshots/redstone.zip) contains seventeen generated functions from the host's
 uploaded `function(2).zip`. The source folder alone lacked pack metadata;
 `pack.mcmeta` supplies the Minecraft Java 26.3 datapack wrapper.

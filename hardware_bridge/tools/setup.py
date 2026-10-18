@@ -42,8 +42,18 @@ def install_packs(world):
         else:
             shutil.copytree(controls, target)
             print('Installed datapack: bridge_controls')
+    builder = ROOT.parent/'minecraft/datapacks/redstone'
     archive = ROOT.parent/'minecraft/snapshots/redstone.zip'
     target = world/'datapacks/redstone'
+    if builder.is_dir():
+        if not (builder/'pack.mcmeta').is_file():
+            raise RuntimeError('Builder source is incomplete: minecraft/datapacks/redstone/pack.mcmeta is missing.')
+        if target.exists() or target.with_suffix('.zip').exists():
+            print('Keeping existing datapack: redstone')
+        else:
+            shutil.copytree(builder, target)
+            print('Installed current builder folder: redstone')
+        return
     if archive.is_file():
         if target.exists() or target.with_suffix('.zip').exists():
             print('Keeping existing datapack: redstone')

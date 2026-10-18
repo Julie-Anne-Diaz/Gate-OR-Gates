@@ -57,6 +57,13 @@ the repository anywhere. The bridge reads the local password automatically.
 The server listens on 127.0.0.1, with the whitelist disabled for local use and
 normal Minecraft authentication enabled. Teammates do not connect to one another.
 
+
+## Builder datapack
+
+The circuit builder and bridge controls are two separate packs in the same
+world. Follow the [redstone builder guide](REDSTONE_BUILDER.md) to install/update
+the current team pack, check that both packs loaded, and place gates or the ALU.
+
 ## Daily use
 
 - Reload `hardware_bridge/quartus/output_files/switch_bridge.sof` after the FPGA

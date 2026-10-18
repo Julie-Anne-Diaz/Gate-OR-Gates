@@ -40,6 +40,21 @@ class SetupTests(unittest.TestCase):
             with patch.object(installer,'ROOT',root):installer.install_packs(root/'runtime/world')
             for name in ('bridge_controls','redstone'):
                 self.assertEqual((root/'runtime/world/datapacks'/name/'pack.mcmeta').read_text(),'source')
+    def test_current_builder_folder_preferred_to_snapshot(self):
+        with tempfile.TemporaryDirectory() as d:
+            repo=Path(d);root=repo/'hardware_bridge'
+            builder=repo/'minecraft/datapacks/redstone';builder.mkdir(parents=True)
+            (builder/'pack.mcmeta').write_text('current')
+            archive=repo/'minecraft/snapshots/redstone.zip';archive.parent.mkdir(parents=True)
+            with zipfile.ZipFile(archive,'w') as z:z.writestr('pack.mcmeta','old')
+            with patch.object(installer,'ROOT',root):installer.install_packs(root/'runtime/world')
+            self.assertEqual((root/'runtime/world/datapacks/redstone/pack.mcmeta').read_text(),'current')
+    def test_incomplete_builder_folder_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            repo=Path(d);root=repo/'hardware_bridge'
+            (repo/'minecraft/datapacks/redstone').mkdir(parents=True)
+            with patch.object(installer,'ROOT',root):
+                with self.assertRaises(RuntimeError):installer.install_packs(root/'runtime/world')
     def test_download_verified_and_atomic(self):
         payload=b'test download';checksum=hashlib.sha1(payload).hexdigest()
         with tempfile.TemporaryDirectory() as d:

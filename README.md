@@ -8,6 +8,7 @@ Arduino UNO R3 to drive the circuit with ten switches and two pushbuttons.
 
 [Start a local workspace](docs/LOCAL_WORKSPACE.md) ·
 [Wire the hardware](docs/WIRING_AND_PROGRAMMING.md) ·
+[Install the builder](docs/REDSTONE_BUILDER.md) ·
 [Generate a circuit](docs/HDL_PIPELINE.md) ·
 [Copy a world](docs/WORLD_BACKUPS.md)
 
@@ -18,7 +19,7 @@ Arduino UNO R3 to drive the circuit with ten switches and two pushbuttons.
 | Build and test on my own computer | [Local workspace](docs/LOCAL_WORKSPACE.md) |
 | Program the FPGA and Arduino | [Wiring and programming](docs/WIRING_AND_PROGRAMMING.md) |
 | Convert my HDL into blocks | [HDL pipeline reference](docs/HDL_PIPELINE.md) |
-| Try the supplied ALU, muxes, or gates | [Minecraft build functions](minecraft/README.md) |
+| Install the builder and place gates or the ALU | [Redstone builder setup](docs/REDSTONE_BUILDER.md) |
 | Share my existing builds and input bindings | [World backups](docs/WORLD_BACKUPS.md) |
 | Contribute with the team | [Contribution guide](CONTRIBUTING.md) |
 
