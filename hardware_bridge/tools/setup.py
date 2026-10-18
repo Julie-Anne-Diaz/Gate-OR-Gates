@@ -34,6 +34,18 @@ def download_server(path):
             temp.unlink()
 
 def install_packs(world):
+    # Additional complete builder packs must travel with all their helper files.
+    sources = ROOT.parent/'minecraft/datapacks'
+    if sources.is_dir():
+        for source in sorted(sources.iterdir()):
+            if source.name == 'redstone' or not source.is_dir() or not (source/'pack.mcmeta').is_file():
+                continue
+            target = world/'datapacks'/source.name
+            if target.exists() or target.with_suffix('.zip').exists():
+                print('Keeping existing datapack:', source.name)
+            else:
+                shutil.copytree(source, target)
+                print('Installed datapack:', source.name)
     controls = ROOT/'bridge_controls'
     target = world/'datapacks/bridge_controls'
     if controls.is_dir():
@@ -131,3 +143,4 @@ if __name__ == '__main__':
     except (Exception, KeyboardInterrupt) as exc:
         print('\nSetup stopped:', exc)
         sys.exit(1)
+
